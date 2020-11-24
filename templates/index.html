@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>音声認識, 形態素解析</title>
+  <script type="text/javascript" src="static/input.js"></script>
+</head>
+<body>
+  <h1>音声認識して形態素解析するツール</h1>
+  <h2>使い方</h2>
+  <p>1. startを押してマイクに話す. 直接打ち込んでも良い.</p>
+  <p>2. analyzeを押すとテキストに対して形態素解析が実行される.</p>
+  <input id="btn" type="button" onclick="exec();" value="start"/>
+
+  <form action="/execute" method="post">
+    <p><label for="rawtext">テキスト</label></p>
+    <textarea id="rawtext" name="rawtext" autocomplete="off"></textarea>
+    <input type="submit" name="submit" value="analyze" />
+  </form>
+  <h2>結果</h2>
+  <div id="output_text">
+    {% for el in output %}
+      <p>{{ el }}</p>
+    {% endfor %}
+  </div>
+<body>
+<html>
